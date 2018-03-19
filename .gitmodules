@@ -1,0 +1,12 @@
+[submodule "src/redhawk_ctl"]
+	path = src/redhawk_ctl
+	url = git@gitlab.com:mitroboteam/redhawk_ctl.git
+[submodule "src/redhawk_moveit"]
+	path = src/redhawk_moveit
+	url = git@gitlab.com:mitroboteam/redhawk_moveit.git
+[submodule "src/redhawk_moveit_config"]
+	path = src/redhawk_moveit_config
+	url = git@gitlab.com:mitroboteam/redhawk_moveit_config.git
+[submodule "src/arm_pathplanning"]
+	path = src/arm_pathplanning
+	url = git@gitlab.com:mitroboteam/arm_pathplanning.git

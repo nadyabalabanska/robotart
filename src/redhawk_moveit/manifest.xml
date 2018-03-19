@@ -1,0 +1,6 @@
+<package>
+  <description brief="redhawk_moveit">redhawk_moveit</description>
+  <depend package="gazebo" />
+  <author>RoboTeam</author>
+  <license>BSD</license>
+</package>

@@ -1,0 +1,23 @@
+<launch>
+
+  <param name="robot_description" textfile="$(find redhawk_moveit)/urdf/redhawk.urdf" />
+
+  <rosparam file="$(find redhawk_moveit)/config/controller_definitions.yaml" command="load" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+    output="screen" ns="/redhawk" args="redhawk_controller"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+	type="robot_state_publisher"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="/source_list">[/joint_states]</rosparam>
+  </node>
+
+  <node ns="redhawk" name="redhawk_controller" pkg="redhawk_moveit" type="redhawk_bridge.py" output="screen" />
+
+  <include file="$(find redhawk_moveit_config)/launch/move_group.launch">
+	<arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+
+</launch>

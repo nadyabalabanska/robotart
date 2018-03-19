@@ -1,0 +1,36 @@
+<launch>
+
+  <param name="robot_description" textfile="$(find redhawk_moveit)/urdf/redhawk.urdf" />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+	args="-param robot_description -urdf -model redhawk" />
+
+  <rosparam file="$(find redhawk_moveit)/config/controller_definitions.yaml" command="load" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+    output="screen" ns="/redhawk" args="redhawk_controller"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher"/>
+
+  <include file="$(find redhawk_moveit_config)/launch/move_group.launch">
+	<arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+
+  <include file="$(find redhawk_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="True" />
+  </include>
+
+
+  <arg name="dev" default="/dev/input/js2" />
+
+  <node pkg="joy" type="joy_node" name="joy">
+    <param name="dev" value="$(arg dev)" />
+    <param name="deadzone" value="0.2" />
+    <param name="autorepeat_rate" value="40" />
+    <param name="coalesce_interval" value="0.025" />
+  </node>
+
+  <!--node pkg="moveit_ros_visualization" type="moveit_joy.py" output="screen" name="moveit_joy"/-->
+
+</launch>
