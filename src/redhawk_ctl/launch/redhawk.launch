@@ -1,5 +1,0 @@
-<launch>
-    <node name="redhawk_cmd" pkg="redhawk_ctl" type="redhawk_cmd.py" output="screen" />
-    <node name="redhawk_telem" pkg="redhawk_ctl" type="redhawk_telemetry.py" output="screen" />
-    <node name="redhawk_joint_state" pkg="redhawk_ctl" type="redhawk_joint_state.py" output="screen" />
-</launch>

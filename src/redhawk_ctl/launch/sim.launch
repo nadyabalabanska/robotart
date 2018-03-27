@@ -1,4 +1,0 @@
-<launch>
-    <node name="redhawk_sim" pkg="redhawk_ctl" type="redhawk_sim.py" output="screen" />
-    <node name="redhawk_joint_state" pkg="redhawk_ctl" type="redhawk_joint_state.py" output="screen" />
-</launch>
