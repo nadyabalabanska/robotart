@@ -17,3 +17,8 @@ Clone this repository. Inside this repository, run `git submodule init` and then
 To attach to the container, run: 
 
 `$ docker exec -i -t roboteam /bin/bash`
+
+### Launching 
+`launch_paint.bash` will execute the main painting program. Artwork is read from `config/drawing.dxf`. 
+
+`launch_rviz.bash` launches RViz configured to show the arm's workspace.
